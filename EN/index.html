@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cucina Creation | High-end kitchen cabinets</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#0e0770', // Dark blue from logo
+              secondary: '#54431e', // Gold accent
+              accent: '#d6b672', // Lighter blue
+              dark: '#1a202c',
+              light: '#f7fafc',
+              red: '#FF0000'
+            },
+            fontFamily: {
+              sans: ['Montserrat', 'sans-serif'],
+              display: ['Playfair Display', 'serif']
+            }
+          }
+        }
+      }
+    </script>
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      .product-card:hover .product-actions {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .modal {
+        transition: all 0.3s ease;
+      }
+
+      .modal-overlay {
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+    </style>
+	<script>
+        // Right-click নিষ্ক্রিয় করতে
+        document.addEventListener('contextmenu', (event) => event.preventDefault());
+
+        // কীবোর্ড শর্টকাট নিষ্ক্রিয় করতে
+        document.addEventListener('keydown', (event) => {
+            if (
+                (event.ctrlKey && event.key === 's') || // Ctrl+S
+                (event.ctrlKey && event.key === 'u') || // Ctrl+U
+                (event.ctrlKey && event.key === 'c') || // Ctrl+C
+                (event.key === 'F12')                  // F12
+            ) {
+                event.preventDefault();
+                alert("This action is disabled on this website.");
+            }
+        });
+
+        // Address bar থেকে লিংক কপি প্রতিরোধ (Referrer কে হ্যান্ডল করা)
+        window.onload = () => {
+            if (window.location !== window.parent.location) {
+                window.parent.location = window.location;
+            }
+        };
+    </script>
+  </head>
+  <body class="bg-gray-50 text-gray-800 font-sans">
+    <!-- Header/Navigation -->
+    <header class="sticky top-0 bg-white shadow-md z-50">
+      <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="relative -mb-12 md:-mb-20 flex items-center">
+          <a class="text-2xl font-bold text-primary flex items-center" href="#">
+            <img alt="Logo Création Cucina, a modern kitchen design company logo with stylized kitchen utensils and elegant typography" class="h-24  w-24 mr-2" height="144" src="../img/logo.png" width="144" />
+          </a>
+        </div>
+        <nav class="hidden md:flex space-x-8 items-center" id="nav-links">
+          <a class="text-primary hover:text-secondary transition font-medium" href="#home" data-lang-key="home"> Welcome </a>
+          <a class="text-primary hover:text-secondary transition font-medium" href="#about" data-lang-key="about"> About </a>
+          <a class="text-primary hover:text-secondary transition font-medium" href="#products" data-lang-key="products"> Products </a>
+          <a class="text-primary hover:text-secondary transition font-medium" href="#gallery" data-lang-key="gallery"> Gallery </a>
+          <a class="text-primary hover:text-secondary transition font-medium" href="#contact" data-lang-key="contact"> Contact </a>
+        </nav>
+        <div class="flex items-center space-x-4">
+          <div class="lang-switcher flex space-x-2 border-r border-gray-300 pr-4" id="lang-switcher-desktop">
+            <a class="active px-2 py-1 text-red font-medium" data-lang="en" href="../EN/index.html"> EN </a>
+            <span class="text-gray-400"> | </span>
+            <a class="px-2 py-1 text-primary font-medium" data-lang="fr" href="../index.html"> FR </a>
+          </div>
+          <a class="hidden md:block bg-secondary hover:bg-yellow-600 text-white px-6 py-2 rounded-lg font-medium transition" href="#contact" id="quote-button"> Free Quote </a>
+        </div>
+        <!-- Mobile menu button -->
+        <button aria-label="Open mobile menu" class="md:hidden text-primary text-2xl" id="mobile-menu-button">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      <!-- Mobile menu -->
+      <nav class="md:hidden bg-white shadow-md w-full absolute top-full left-0 z-40 hidden" id="mobile-menu">
+        <div class="flex flex-col px-4 py-4 space-y-4">
+          <a class="text-primary hover:text-secondary transition font-medium" href="#home" data-lang-key="home" onclick="toggleMobileMenu()"> Welcome </a>
+          <a class="text-primary hover:text-secondary transition font-medium" href="#about" data-lang-key="about" onclick="toggleMobileMenu()"> About </a>
+          <a class="text-primary hover:text-secondary transition font-medium" href="#products" data-lang-key="products" onclick="toggleMobileMenu()"> Products </a>
+          <a class="text-primary hover:text-secondary transition font-medium" href="#gallery" data-lang-key="gallery" onclick="toggleMobileMenu()"> Gallery </a>
+          <a class="text-primary hover:text-secondary transition font-medium" href="#contact" data-lang-key="contact" onclick="toggleMobileMenu()"> Contact </a>
+          <div class="flex items-center space-x-4 pt-2 border-t border-gray-200">
+            <div class="lang-switcher flex space-x-2 border-r border-gray-300 pr-4" id="lang-switcher-mobile">
+              <a class="active px-2 py-1 text-red font-medium" data-lang="en" href="../EN/index.html"> EN </a>
+              <span class="text-gray-400"> | </span>
+              <a class="px-2 py-1 text-primary font-medium" data-lang="fr" href="../index.html"> FR </a>
+            </div>
+            <a class="bg-secondary hover:bg-yellow-600 text-white px-6 py-2 rounded-lg font-medium transition" href="#contact" id="quote-button-mobile" onclick="toggleMobileMenu()"> Free Quote </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <script></script>
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-16 md:pt-32 md:pb-24 bg-gradient-to-r from-primary to-accent">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
+            <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"> Superior Quality <span class="text-red">Customized</span> Kitchens </h1>
+            <p class="text-lg text-gray-200 mb-8"> Transform your kitchen with our high-end cabinets, custom-made for your space and style. </p>
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+              <a href="#products" class="bg-secondary hover:bg-yellow-600 text-white px-6 py-3 rounded-lg font-medium text-center transition"> View Our Products </a>
+              <a href="#contact" class="border-2 border-white text-white hover:bg-white hover:text-primary px-6 py-3 rounded-lg font-medium text-center transition"> Free Consultation </a>
+            </div>
+            <div class="mt-8 flex items-center space-x-4">
+              <div class="flex -space-x-2">
+                <img src="https://randomuser.me/api/portraits/women/12.jpg" class="w-10 h-10 rounded-full border-2 border-white">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-10 h-10 rounded-full border-2 border-white">
+                <img src="https://randomuser.me/api/portraits/women/45.jpg" class="w-10 h-10 rounded-full border-2 border-white">
+              </div>
+              <div class="text-white">
+                <div class="flex text-yellow-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <p class="text-sm">200+ satisfied customers</p>
+              </div>
+            </div>
+          </div>
+          <div class="md:w-1/2" data-aos="fade-left">
+            <div class="relative">
+              <img src="../img/IMG_0622.png" alt="High-end cuisine" class="rounded-lg shadow-2xl w-full h-auto object-cover">
+              <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-lg hidden md:block">
+                <div class="text-3xl font-bold text-primary">15+</div>
+                <div class="text-gray-600">Years of experience</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Trust Badges -->
+    <section class="py-6 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+          <div class="text-center">
+            <div class="text-3xl text-primary font-bold">10+</div>
+            <div class="text-gray-600">Exclusive models</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl text-primary font-bold">5 years</div>
+            <div class="text-gray-600">Warranty</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl text-primary font-bold">100%</div>
+            <div class="text-gray-600">Made in Quebec</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl text-primary font-bold">500+</div>
+            <div class="text-gray-600">Completed projects</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-primary mb-4"> Creation Cucina </h2>
+          <div class="w-24 h-1 bg-secondary mx-auto mb-6"></div>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto"> Specialists in custom kitchen cabinets since 2008, we combine artisanal know-how and contemporary design to create unique spaces. </p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div data-aos="fade-right">
+            <img src="../img/IMG_1373.png" alt="Our team" class="rounded-lg shadow-xl w-full h-auto object-cover">
+          </div>
+          <div data-aos="fade-left">
+            <h3 class="font-display text-2xl font-semibold text-primary mb-4">Our Philosophy</h3>
+            <p class="text-gray-600 mb-6"> At Création Cucina, we believe that the kitchen is the heart of the home. This is why we put all our know-how and passion into each project. </p>
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-start">
+                <div class="text-secondary mt-1 mr-3">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <span class="text-gray-700">Carefully selected premium materials</span>
+              </li>
+              <li class="flex items-start">
+                <div class="text-secondary mt-1 mr-3">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <span class="text-gray-700">Local manufacturing in our Montreal workshop</span>
+              </li>
+              <li class="flex items-start">
+                <div class="text-secondary mt-1 mr-3">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <span class="text-gray-700">Custom design to suit your space and style</span>
+              </li>
+              <li class="flex items-start">
+                <div class="text-secondary mt-1 mr-3">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <span class="text-gray-700">Professional installation by our experienced team</span>
+              </li>
+            </ul>
+            <a href="#contact" class="inline-block bg-primary hover:bg-accent text-white px-6 py-3 rounded-lg font-medium transition"> Meet our designer </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Products Section -->
+    <!-- Enhanced Products Section -->
+    <section id="products" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-primary mb-4"> Our Exclusive Collections </h2>
+          <div class="w-24 h-1 bg-secondary mx-auto mb-6"></div>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto"> Discover our ranges of kitchen cabinets designed to combine aesthetics and functionality. </p>
+        </div>
+        <!-- Enhanced Filter and Sort System -->
+        <div class="flex flex-col md:flex-row justify-between items-center mb-8 gap-4" data-aos="fade-up">
+          <!-- Filter Buttons -->
+          <div class="flex flex-wrap gap-2">
+            <button class="filter-btn px-4 py-2 bg-primary text-white rounded-lg font-medium" data-filter="all"> All </button>
+            <button class="filter-btn px-4 py-2 bg-white hover:bg-gray-100 rounded-lg font-medium" data-filter="classic"> Classic </button>
+            <button class="filter-btn px-4 py-2 bg-white hover:bg-gray-100 rounded-lg font-medium" data-filter="modern"> Modern </button>
+            <button class="filter-btn px-4 py-2 bg-white hover:bg-gray-100 rounded-lg font-medium" data-filter="contemporary"> Contemporary </button>
+            <button class="filter-btn px-4 py-2 bg-white hover:bg-gray-100 rounded-lg font-medium" data-filter="custom"> Custom made </button>
+          </div>
+          <!-- Sort Dropdown -->
+          <div class="relative">
+            <select id="sort-products" class="appearance-none bg-white border border-gray-300 rounded-lg pl-4 pr-8 py-2 focus:outline-none focus:ring-2 focus:ring-secondary">
+              <option value="popular">Sort by: Popularity</option>
+              <option value="price-asc">Price: Ascending</option>
+              <option value="price-desc">Price: Descending</option>
+              <option value="newest">News</option>
+              <option value="rating">Top ratings</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+              <i class="fas fa-chevron-down"></i>
+            </div>
+          </div>
+        </div>
+        <!-- Product Grid with Enhanced Functionality -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" id="product-grid">
+          <!-- Product 1 -->
+          <div class="product-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl relative transition" data-aos="fade-up" data-aos-delay="100" data-category="modern" data-price="2499" data-rating="4.7" data-date="2023-10-15" onclick="openProductModal('luxe')">
+            <div class="relative">
+              <img src="../img/IMG_0621.png" alt="Luxury Collection" class="w-full h-64 object-cover">
+              <div class="product-actions absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4 opacity-0 transform translate-y-4 transition">
+                <button class="quick-view-btn bg-secondary hover:bg-yellow-600 text-white px-4 py-2 rounded-lg font-medium mr-2">
+                  <i class="fas fa-eye mr-1"></i> See </button>
+                <button class="wishlist-btn bg-white hover:bg-gray-100 text-primary px-4 py-2 rounded-lg font-medium">
+                  <i class="far fa-heart mr-1"></i> Save </button>
+              </div>
+              <div class="absolute top-4 right-4 bg-secondary text-white px-3 py-1 rounded-full text-sm font-bold"> New </div>
+            </div>
+            <div class="p-6">
+              <h3 class="font-display text-xl font-semibold mb-2">Luxury Collection</h3>
+              <div class="flex items-center text-yellow-400 mb-3">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <span class="text-gray-500 ml-2 text-sm">4.7 (28)</span>
+              </div>
+              <p class="text-gray-600 mb-4"> Solid oak cabinets with high-end lacquered finish. </p>
+              <div class="flex justify-between items-center">
+                <span class="font-bold text-primary">Starting at <span class="product-price">$2,499</span>
+                </span>
+                <button class="text-secondary hover:text-yellow-600 font-medium"> Details <i class="fas fa-arrow-right ml-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Product 2 -->
+          <div class="product-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl relative transition" data-aos="fade-up" data-aos-delay="200" data-category="modern" data-price="1899" data-rating="5.0" data-date="2023-08-22" onclick="openProductModal('modern')">
+            <div class="relative">
+              <img src="../img/IMG_0622.png" alt="Modern Collection" class="w-full h-64 object-cover">
+              <div class="product-actions absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4 opacity-0 transform translate-y-4 transition">
+                <button class="quick-view-btn bg-secondary hover:bg-yellow-600 text-white px-4 py-2 rounded-lg font-medium mr-2">
+                  <i class="fas fa-eye mr-1"></i> See </button>
+                <button class="wishlist-btn bg-white hover:bg-gray-100 text-primary px-4 py-2 rounded-lg font-medium">
+                  <i class="far fa-heart mr-1"></i> Save </button>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="font-display text-xl font-semibold mb-2">Modern Collection</h3>
+              <div class="flex items-center text-yellow-400 mb-3">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <span class="text-gray-500 ml-2 text-sm">5.0 (15)</span>
+              </div>
+              <p class="text-gray-600 mb-4"> Sleek design with smooth doors and integrated handles. </p>
+              <div class="flex justify-between items-center">
+                <span class="font-bold text-primary">Starting at <span class="product-price">$1,899</span>
+                </span>
+                <button class="text-secondary hover:text-yellow-600 font-medium"> Details <i class="fas fa-arrow-right ml-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Product 3 -->
+          <div class="product-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl relative transition" data-aos="fade-up" data-aos-delay="300" data-category="classic" data-price="2199" data-rating="5.0" data-date="2023-05-10" onclick="openProductModal('classic')">
+            <div class="relative">
+              <img src="../img/IMG_0625.png" alt="Classic Collection" class="w-full h-64 object-cover">
+              <div class="product-actions absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4 opacity-0 transform translate-y-4 transition">
+                <button class="quick-view-btn bg-secondary hover:bg-yellow-600 text-white px-4 py-2 rounded-lg font-medium mr-2">
+                  <i class="fas fa-eye mr-1"></i> See </button>
+                <button class="wishlist-btn bg-white hover:bg-gray-100 text-primary px-4 py-2 rounded-lg font-medium">
+                  <i class="far fa-heart mr-1"></i> Save </button>
+              </div>
+              <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-bold"> Bestseller </div>
+            </div>
+            <div class="p-6">
+              <h3 class="font-display text-xl font-semibold mb-2">Classic Collection</h3>
+              <div class="flex items-center text-yellow-400 mb-3">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <span class="text-gray-500 ml-2 text-sm">5.0 (42)</span>
+              </div>
+              <p class="text-gray-600 mb-4"> Molded panels and noble wood finishes for a timeless look. </p>
+              <div class="flex justify-between items-center">
+                <span class="font-bold text-primary">Starting at <span class="product-price">$2,199</span>
+                </span>
+                <button class="text-secondary hover:text-yellow-600 font-medium"> Details <i class="fas fa-arrow-right ml-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Product 4 (Hidden by default, shows when filtering) -->
+          <div class="product-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition relative hidden" data-aos="fade-up" data-aos-delay="400" data-category="contemporary" data-price="2799" data-rating="4.9" data-date="2023-11-05" onclick="openProductModal('contemporary')">
+            <div class="relative">
+              <img src="../img/IMG_1373.png" alt="Contemporary Collection" class="w-full h-64 object-cover">
+              <div class="product-actions absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4 opacity-0 transform translate-y-4 transition">
+                <button class="quick-view-btn bg-secondary hover:bg-yellow-600 text-white px-4 py-2 rounded-lg font-medium mr-2">
+                  <i class="fas fa-eye mr-1"></i> See </button>
+                <button class="wishlist-btn bg-white hover:bg-gray-100 text-primary px-4 py-2 rounded-lg font-medium">
+                  <i class="far fa-heart mr-1"></i> Save </button>
+              </div>
+              <div class="absolute top-4 right-4 bg-secondary text-white px-3 py-1 rounded-full text-sm font-bold"> New </div>
+            </div>
+            <div class="p-6">
+              <h3 class="font-display text-xl font-semibold mb-2">Contemporary Collection</h3>
+              <div class="flex items-center text-yellow-400 mb-3">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <span class="text-gray-500 ml-2 text-sm">4.9 (23)</span>
+              </div>
+              <p class="text-gray-600 mb-4"> Avant-garde design with metal and glass finishes. </p>
+              <div class="flex justify-between items-center">
+                <span class="font-bold text-primary">Starting at <span class="product-price">$2,799</span>
+                </span>
+                <button class="text-secondary hover:text-yellow-600 font-medium"> Details <i class="fas fa-arrow-right ml-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Product 5 (Hidden by default, shows when filtering) -->
+          <div class="product-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition relative hidden" data-aos="fade-up" data-aos-delay="500" data-category="custom" data-price="3499" data-rating="4.8" data-date="2023-09-18" onclick="openProductModal('tailor-made')">
+            <div class="relative">
+              <img src="../img/IMG_1375.png" alt="Custom Collection" class="w-full h-64 object-cover">
+              <div class="product-actions absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4 opacity-0 transform translate-y-4 transition">
+                <button class="quick-view-btn bg-secondary hover:bg-yellow-600 text-white px-4 py-2 rounded-lg font-medium mr-2">
+                  <i class="fas fa-eye mr-1"></i> See </button>
+                <button class="wishlist-btn bg-white hover:bg-gray-100 text-primary px-4 py-2 rounded-lg font-medium">
+                  <i class="far fa-heart mr-1"></i> Save </button>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="font-display text-xl font-semibold mb-2">Custom Collection</h3>
+              <div class="flex items-center text-yellow-400 mb-3">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <span class="text-gray-500 ml-2 text-sm">4.8 (37)</span>
+              </div>
+              <p class="text-gray-600 mb-4"> Fully customized, complete solution for your unique space. </p>
+              <div class="flex justify-between items-center">
+                <span class="font-bold text-primary">Starting at <span class="product-price">$3,499</span>
+                </span>
+                <button class="text-secondary hover:text-yellow-600 font-medium"> Details <i class="fas fa-arrow-right ml-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-12" data-aos="fade-up">
+          <button id="load-more" class="inline-block border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-lg font-medium transition"> Load More Products </button>
+        </div>
+      </div>
+    </section>
+    <!-- JavaScript for Enhanced Functionality -->
+    <script>
+      // Product Filtering
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const filter = this.getAttribute('data-filter');
+          // Update active filter button
+          document.querySelectorAll('.filter-btn').forEach(b => {
+            b.classList.remove('bg-primary', 'text-white');
+            b.classList.add('bg-white', 'hover:bg-gray-100');
+          });
+          this.classList.add('bg-primary', 'text-white');
+          this.classList.remove('bg-white', 'hover:bg-gray-100');
+          // Filter products
+          document.querySelectorAll('.product-card').forEach(card => {
+            if (filter === 'all' || card.getAttribute('data-category') === filter) {
+              card.classList.remove('hidden');
+            } else {
+              card.classList.add('hidden');
+            }
+          });
+        });
+      });
+      // Product Sorting
+      document.getElementById('sort-products').addEventListener('change', function() {
+        const sortBy = this.value;
+        const container = document.getElementById('product-grid');
+        const products = Array.from(container.querySelectorAll('.product-card'));
+        products.sort((a, b) => {
+          switch (sortBy) {
+            case 'price-asc':
+              return parseFloat(a.getAttribute('data-price')) - parseFloat(b.getAttribute('data-price'));
+            case 'price-desc':
+              return parseFloat(b.getAttribute('data-price')) - parseFloat(a.getAttribute('data-price'));
+            case 'newest':
+              return new Date(b.getAttribute('data-date')) - new Date(a.getAttribute('data-date'));
+            case 'rating':
+              return parseFloat(b.getAttribute('data-rating')) - parseFloat(a.getAttribute('data-rating'));
+            default: //popular
+              return 0; // Default order
+          }
+        });
+        // Re-append sorted products
+        products.forEach(product => container.appendChild(product));
+      });
+      // Load More Products
+      document.getElementById('load-more').addEventListener('click', function() {
+        // In a real implementation, this would fetch more products from an API
+        document.querySelectorAll('.product-card.hidden').forEach((card, index) => {
+          if (index < 2) { // Show 2 more at a time
+            card.classList.remove('hidden');
+            card.setAttribute('data-aos-delay', (index + 4) * 100);
+            AOS.refresh(); // Refresh animations for new items
+          }
+        });
+        // Hide button if no more products
+        if (document.querySelectorAll('.product-card.hidden').length === 0) {
+          this.style.display = 'none';
+        }
+      });
+      // Wishlist Functionality
+      document.querySelectorAll('.wishlist-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation(); // Prevent opening product modal
+          this.innerHTML = ' < i class = "fas fa-heart mr-1" > < /i> Saved';
+          this.classList.remove('bg-white', 'text-primary');
+          this.classList.add('bg-secondary', 'text-white');
+          // In a real implementation, add to wishlist in local storage or via API
+        });
+      });
+      // Quick View Functionality
+      document.querySelectorAll('.quick-view-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation(); // Prevent opening product modal
+          const productCard = this.closest('.product-card');
+          const productId = productCard.getAttribute('onclick').match(/'([^']+)'/)[1];
+          openProductModal(productId);
+        });
+      });
+      // Enhanced Product Modal System
+      function openProductModal(productId) {
+        // In a real implementation, this would fetch product details from an API
+        const modalContent = {
+            luxury ': {
+            title: 'Luxury Collection',
+            price: '2,499',
+            description: 'Solid oak cabinets with high-end lacquered finish for an exceptional kitchen. Handcrafted in our Montreal workshop.',
+            features: [
+              FSC ' certified solid oak,
+              Stain - resistant lacquered finish,
+              Blum ' premium punches and hinges,
+              Customizable color options ',
+              5 year warranty
+            ],
+            rating: '4.7',
+            reviews: '28'
+          },
+          // Other products would have their own data here
+      };
+      // Update modal with product data
+      const modal = document.getElementById('product-modal');
+      const product = modalContent[productId];
+      modal.querySelector('.modal-title').textContent = product.title;
+      modal.querySelector('.modal-price').textContent = product.price;
+      modal.querySelector('.modal-description').textContent = product.description;
+      modal.querySelector('.modal-rating').textContent = product.rating;
+      modal.querySelector('.modal-reviews').textContent = product.reviews;
+      // Update features list
+      const featuresList = modal.querySelector('.modal-features');
+      featuresList.innerHTML = '';
+      product.features.forEach(feature => {
+        featuresList.innerHTML += `
+																		<li class="flex items-start mb-2">
+																			<i class="fas fa-check text-secondary mt-1 mr-2"></i>
+																			<span>${feature}</span>
+																		</li>`;
+      });
+      // Show modal
+      modal.classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+      }
+
+      function closeProductModal() {
+        document.getElementById('product-modal').classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+      }
+      // Close modal when clicking outside
+      document.getElementById('product-modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+          closeProductModal();
+        }
+      });
+    </script>
+    <!-- Enhanced Product Modal -->
+    <div id="product-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+      <div class="absolute inset-0 bg-black bg-opacity-70"></div>
+      <div class="relative bg-white rounded-xl max-w-6xl w-11/12 max-h-[90vh] overflow-y-auto">
+        <button onclick="closeProductModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+          <i class="fas fa-times text-2xl"></i>
+        </button>
+        <div class="p-8">
+          <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Product Images -->
+            <div class="lg:w-1/2">
+              <div class="sticky top-8">
+                <img src="../img/IMG_3966.png" alt="Product" class="w-full rounded-lg mb-4" id="main-product-image">
+                <div class="grid grid-cols-4 gap-2">
+                  <img src="../img/IMG_4769.png" alt="Thumbnail" class="cursor-pointer border-2 border-transparent hover:border-secondary rounded transition" onclick="document.getElementById('main-product-image').src = this.src">
+                  <img src="../img/IMG_0621.png" alt="Thumbnail" class="cursor-pointer border-2 border-transparent hover:border-secondary rounded transition" onclick="document.getElementById('main-product-image').src = this.src">
+                  <img src="../img/IMG_0625.png" alt="Thumbnail" class="cursor-pointer border-2 border-transparent hover:border-secondary rounded transition" onclick="document.getElementById('main-product-image').src = this.src">
+                  <img src="../img/IMG_1375.png" alt="Thumbnail" class="cursor-pointer border-2 border-transparent hover:border-secondary rounded transition" onclick="document.getElementById('main-product-image').src = this.src">
+                </div>
+              </div>
+            </div>
+            <!-- Product Details -->
+            <div class="lg:w-1/2">
+              <h3 class="modal-title font-display text-3xl font-bold text-primary mb-2"></h3>
+              <div class="flex items-center text-yellow-400 mb-4">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <span class="text-gray-500 ml-2">
+                  <span class="modal-rating"></span> ( <span class="modal-reviews"></span> avis) </span>
+              </div>
+              <p class="modal-description text-gray-700 mb-6"></p>
+              <div class="mb-6">
+                <h4 class="font-semibold text-lg mb-3">Features:</h4>
+                <ul class="modal-features space-y-2"></ul>
+              </div>
+              <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                <h4 class="font-semibold text-lg mb-2">Price:</h4>
+                <div class="text-3xl font-bold text-primary"> Starting at <span class="modal-price"></span>$ </div>
+                <p class="text-gray-600 text-sm mt-1"> Price for a standard kitchen with 10 cabinets. Personalized quote available. </p>
+              </div>
+              <div class="flex flex-col sm:flex-row gap-4 mb-6">
+                <button class="bg-secondary hover:bg-yellow-600 text-white px-6 py-3 rounded-lg font-medium transition flex-1">
+                  <i class="fas fa-shopping-cart mr-2"></i> Add to cart </button>
+                <button class="border border-primary text-primary hover:bg-primary hover:text-white px-6 py-3 rounded-lg font-medium transition flex-1">
+                  <i class="far fa-heart mr-2"></i> Wishlist </button>
+              </div>
+              <div class="flex items-center text-sm text-gray-600 mb-4">
+                <i class="fas fa-truck mr-2 text-secondary"></i>
+                <span>Free delivery in the Montreal region</span>
+              </div>
+              <div class="flex items-center text-sm text-gray-600">
+                <i class="fas fa-shield-alt mr-2 text-secondary"></i>
+                <span>5 ​​year guarantee on all our products</span>
+              </div>
+            </div>
+          </div>
+          <!-- Additional Info Tabs -->
+          <div class="mt-12">
+            <div class="border-b border-gray-200">
+              <nav class="flex -mb-px space-x-8">
+                <button class="product-tab active py-4 px-1 border-b-2 font-medium text-sm border-secondary text-secondary"> Technical details </button>
+                <button class="product-tab py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"> Dimensions </button>
+                <button class="product-tab py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"> Customer reviews </button>
+                <button class="product-tab py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"> FAQs </button>
+              </nav>
+            </div>
+            <div class="py-6">
+              <div class="product-tab-content active">
+                <h4 class="font-semibold text-lg mb-3">Technical specifications:</h4>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <li class="flex justify-between py-2 border-b border-gray-100">
+                    <span class="text-gray-600">Main material</span>
+                    <span class="font-medium">Solid oak</span>
+                  </li>
+                  <li class="flex justify-between py-2 border-b border-gray-100">
+                    <span class="text-gray-600">Door thickness</span>
+                    <span class="font-medium">22mm</span>
+                  </li>
+                  <li class="flex justify-between py-2 border-b border-gray-100">
+                    <span class="text-gray-600">Finish type</span>
+                    <span class="font-medium">High resistance lacquer</span>
+                  </li>
+                  <li class="flex justify-between py-2 border-b border-gray-100">
+                    <span class="text-gray-600">Opening system</span>
+                    <span class="font-medium">Blum soft-close hinges</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="product-tab-content hidden">
+                <!-- Dimensions content would go here -->
+              </div>
+              <div class="product-tab-content hidden">
+                <!-- Reviews content would go here -->
+              </div>
+              <div class="product-tab-content hidden">
+                <!-- FAQ content would go here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Tab functionality for product modal
+      document.querySelectorAll('.product-tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+          const tabIndex = Array.from(this.parentElement.children).indexOf(this);
+          // Update active tab
+          document.querySelectorAll('.product-tab').forEach(t => {
+            t.classList.remove('active', 'text-secondary', 'border-secondary');
+            t.classList.add('text-gray-500', 'border-transparent');
+          });
+          this.classList.add('active', 'text-secondary', 'border-secondary');
+          this.classList.remove('text-gray-500', 'border-transparent');
+          // Show corresponding content
+          document.querySelectorAll('.product-tab-content').forEach((content, index) => {
+            if (index === tabIndex) {
+              content.classList.remove('hidden');
+              content.classList.add('active');
+            } else {
+              content.classList.add('hidden');
+              content.classList.remove('active');
+            }
+          });
+        });
+      });
+    </script>
+    <!-- CTA Section -->
+    <section class="py-16 bg-primary text-white">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="font-display text-3xl md:text-4xl font-bold mb-6" data-aos="fade-up"> Ready to transform your kitchen? </h2>
+        <p class="text-xl max-w-3xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="100"> Get a free consultation with our designer and receive a personalized quote. </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="200">
+          <a href="#contact" class="bg-secondary hover:bg-yellow-600 text-white px-8 py-3 rounded-lg font-medium transition"> Make an appointment </a>
+          <a href="tel:+15141234567" class="bg-white hover:bg-gray-100 text-primary px-8 py-3 rounded-lg font-medium transition">
+            <i class="fas fa-phone-alt mr-2"></i> (514) 123-4567 </a>
+        </div>
+      </div>
+    </section>
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-primary mb-4"> Our Achievements </h2>
+          <div class="w-24 h-1 bg-secondary mx-auto mb-6"></div>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto"> Discover kitchens transformed with our custom cabinets. </p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div class="gallery-item relative group overflow-hidden rounded-lg cursor-pointer" data-aos="fade-up" data-aos-delay="100">
+            <img src="../img/IMG_0622.png" alt="Montreal Project" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
+              <h3 class="text-white text-lg font-semibold">Montreal Project</h3>
+              <p class="text-gray-200 text-sm">Modern Style</p>
+            </div>
+          </div>
+          <div class="gallery-item relative group overflow-hidden rounded-lg cursor-pointer" data-aos="fade-up" data-aos-delay="150">
+            <img src="../img/IMG_1373.png" alt="Laval Project" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
+              <h3 class="text-white text-lg font-semibold">Laval Project</h3>
+              <p class="text-gray-200 text-sm">Classic Style</p>
+            </div>
+          </div>
+          <div class="gallery-item relative group overflow-hidden rounded-lg cursor-pointer" data-aos="fade-up" data-aos-delay="200">
+            <img src="../img/IMG_3966.png" alt="Westmount Project" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
+              <h3 class="text-white text-lg font-semibold">Westmount Project</h3>
+              <p class="text-gray-200 text-sm">Contemporary Style</p>
+            </div>
+          </div>
+          <div class="gallery-item relative group overflow-hidden rounded-lg cursor-pointer" data-aos="fade-up" data-aos-delay="250">
+            <img src="../img/IMG_4769.png" alt="Outremont Project" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+            <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition">
+              <h3 class="text-white text-lg font-semibold">Outremont Project</h3>
+              <p class="text-gray-200 text-sm">Luxury Style</p>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-12" data-aos="fade-up">
+          <a href="#" class="inline-block border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-lg font-medium transition"> See More Projects </a>
+        </div>
+      </div>
+    </section>
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-primary mb-4"> Testimonials </h2>
+          <div class="w-24 h-1 bg-secondary mx-auto mb-6"></div>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto"> What our customers say about their experience with Création Cucina. </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-white p-8 rounded-xl shadow-sm" data-aos="fade-up" data-aos-delay="100">
+            <div class="text-yellow-400 mb-4">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p class="italic mb-6 text-gray-700"> "The quality of the cabinets exceeds anything I have seen anywhere else. Our kitchen is beautiful and functional. The service was impeccable from start to finish." </p>
+            <div class="flex items-center">
+              <img src="https://randomuser.me/api/portraits/women/45.jpg" class="w-12 h-12 rounded-full mr-4">
+              <div>
+                <h4 class="font-semibold">Isabelle Tremblay</h4>
+                <p class="text-gray-500 text-sm">Montreal</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white p-8 rounded-xl shadow-sm" data-aos="fade-up" data-aos-delay="200">
+            <div class="text-yellow-400 mb-4">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p class="italic mb-6 text-gray-700"> "The designer was able to understand exactly what we wanted. The cabinets are perfectly suited to our space and our lifestyle." </p>
+            <div class="flex items-center">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-12 h-12 rounded-full mr-4">
+              <div>
+                <h4 class="font-semibold">Marc Bélanger</h4>
+                <p class="text-gray-500 text-sm">Laval</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white p-8 rounded-xl shadow-sm" data-aos="fade-up" data-aos-delay="300">
+            <div class="text-yellow-400 mb-4">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <p class="italic mb-6 text-gray-700"> "After 2 years, our cabinets are like new. The finish stands up perfectly to daily use. We recommend without hesitation!" </p>
+            <div class="flex items-center">
+              <img src="https://randomuser.me/api/portraits/women/68.jpg" class="w-12 h-12 rounded-full mr-4">
+              <div>
+                <h4 class="font-semibold">Sophie Chen</h4>
+                <p class="text-gray-500 text-sm">Brossard</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-primary mb-4"> Contact Us </h2>
+          <div class="w-24 h-1 bg-secondary mx-auto mb-6"></div>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto"> Ready to start your kitchen project? Fill out the form or call us directly. </p>
+        </div>
+        <div class="flex flex-col lg:flex-row gap-12">
+          <div class="lg:w-1/2" data-aos="fade-right">
+            <div class="bg-gray-50 p-8 rounded-xl shadow-md">
+              <h3 class="font-display text-2xl font-semibold text-primary mb-6">Request information</h3>
+              <form>
+                <div class="mb-6">
+                  <label for="name" class="block text-gray-700 mb-2 font-medium">Full name</label>
+                  <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">
+                </div>
+                <div class="mb-6">
+                  <label for="email" class="block text-gray-700 mb-2 font-medium">Email address</label>
+                  <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">
+                </div>
+                <div class="mb-6">
+                  <label for="phone" class="block text-gray-700 mb-2 font-medium">Phone</label>
+                  <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">
+                </div>
+                <div class="mb-6">
+                  <label for="project" class="block text-gray-700 mb-2 font-medium">Project type</label>
+                  <select id="project" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary">
+                    <option value="">Select an option</option>
+                    <option value="new">New kitchen</option>
+                    <option value="renovation">Renovation</option>
+                    <option value="custom">Custom cabinets</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div class="mb-6">
+                  <label for="message" class="block text-gray-700 mb-2 font-medium">Message</label>
+                  <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-secondary hover:bg-yellow-600 text-white py-3 px-6 rounded-lg font-medium transition"> Send request </button>
+              </form>
+            </div>
+          </div>
+          <div class="lg:w-1/2" data-aos="fade-left">
+            <div class="bg-gray-50 p-8 rounded-xl shadow-md h-full">
+              <h3 class="font-display text-2xl font-semibold text-primary mb-6">Our Contact Information</h3>
+              <div class="space-y-6 mb-8">
+                <div class="flex items-start">
+                  <div class="text-secondary text-xl mt-1 mr-4">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-lg mb-1">Showroom</h4>
+                    <p class="text-gray-600">123 Rue des Armoires, Montréal, QC H1A 1A1</p>
+                    <a href="#" class="text-primary hover:text-accent font-medium text-sm mt-1 inline-block">
+                      <i class="fas fa-directions mr-1"></i> See on the map </a>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="text-secondary text-xl mt-1 mr-4">
+                    <i class="fas fa-phone-alt"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-lg mb-1">Telephone</h4>
+                    <p class="text-gray-600">(514) 123-4567</p>
+                    <p class="text-gray-600">Mon-Fri: 9am-5pm</p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="text-secondary text-xl mt-1 mr-4">
+                    <i class="fas fa-envelope"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-lg mb-1">Email</h4>
+                    <p class="text-gray-600">info@creationcucina.com</p>
+                    <p class="text-gray-600">Reply within 24 hours</p>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-8">
+                <h4 class="font-semibold text-lg mb-4">Opening hours</h4>
+                <ul class="space-y-2">
+                  <li class="flex justify-between py-2 border-b border-gray-200">
+                    <span class="text-gray-600">Monday - Friday</span>
+                    <span class="font-medium">9:00 - 17:00</span>
+                  </li>
+                  <li class="flex justify-between py-2 border-b border-gray-200">
+                    <span class="text-gray-600">Saturday</span>
+                    <span class="font-medium">10:00 - 16:00</span>
+                  </li>
+                  <li class="flex justify-between py-2">
+                    <span class="text-gray-600">Sunday</span>
+                    <span class="font-medium">Closed</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-semibold text-lg mb-4">Follow us</h4>
+                <div class="flex space-x-4">
+                  <a href="#" class="bg-primary hover:bg-accent text-white w-10 h-10 rounded-full flex items-center justify-center transition">
+                    <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a href="#" class="bg-primary hover:bg-accent text-white w-10 h-10 rounded-full flex items-center justify-center transition">
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                  <a href="#" class="bg-primary hover:bg-accent text-white w-10 h-10 rounded-full flex items-center justify-center transition">
+                    <i class="fab fa-pinterest-p"></i>
+                  </a>
+                  <a href="#" class="bg-primary hover:bg-accent text-white w-10 h-10 rounded-full flex items-center justify-center transition">
+                    <i class="fab fa-houzz"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div>
+            <img src="../img/logo.png" alt="Cucina Creation" class="h-36 mb-4">
+            <p class="text-gray-300"> Specialists in custom kitchen cabinets since 2008. Quality, design and craftsmanship. </p>
+          </div>
+          <div>
+            <h3 class="font-display text-lg font-semibold mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#home" class="text-gray-300 hover:text-white transition">Home</a>
+              </li>
+              <li>
+                <a href="#about" class="text-gray-300 hover:text-white transition">About</a>
+              </li>
+              <li>
+                <a href="#products" class="text-gray-300 hover:text-white transition">Products</a>
+              </li>
+              <li>
+                <a href="#gallery" class="text-gray-300 hover:text-white transition">Gallery</a>
+              </li>
+              <li>
+                <a href="#contact" class="text-gray-300 hover:text-white transition">Contact</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-display text-lg font-semibold mb-4">Services</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white transition">Custom design</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white transition">Cabinet Manufacturing</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white transition">Kitchen renovation</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white transition">Professional installation</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white transition">After-sales service</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-display text-lg font-semibold mb-4">Newsletter</h3>
+            <p class="text-gray-300 mb-4"> Subscribe for design tips and exclusive offers. </p>
+            <form class="flex">
+              <input type="email" placeholder="Your email" class="px-4 py-2 w-full rounded-l-lg focus:outline-none text-gray-800">
+              <button type="submit" class="bg-secondary hover:bg-yellow-600 px-4 py-2 rounded-r-lg">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="border-t border-accent mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p class="text-gray-300 mb-4 md:mb-0">&copy; 2023 Creation of Cucina. All rights reserved.</p>
+          <div class="flex space-x-6">
+            <a href="#" class="text-gray-300 hover:text-white transition">Privacy Policy</a>
+            <a href="#" class="text-gray-300 hover:text-white transition">Terms of Use</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Product Modals -->
+    <!-- Modal 1 -->
+    <div id="modal1" class="modal fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition">
+      <div class="modal-overlay absolute inset-0"></div>
+      <div class="modal-container bg-white w-11/12 md:max-w-4xl mx-auto rounded-xl shadow-lg z-50 overflow-y-auto max-h-screen">
+        <div class="modal-content py-4 px-6">
+          <div class="flex justify-between items-center pb-3">
+            <h3 class="font-display text-2xl font-bold text-primary">Luxe Collection</h3>
+            <button onclick="closeModal('modal1')" class="text-gray-500 hover:text-gray-700">
+              <i class="fas fa-times text-2xl"></i>
+            </button>
+          </div>
+          <div class="flex flex-col md:flex-row gap-6">
+            <div class="md:w-1/2">
+              <img src="https://plancherspayless.com/wp-content/uploads/2023/06/IMG_20230606_085533-1024x768.jpg" alt="Luxury Collection" class="w-full rounded-lg">
+              <div class="grid grid-cols-3 gap-2 mt-4">
+                <img src="https://plancherspayless.com/wp-content/uploads/2023/06/IMG_20230606_085533-1024x768.jpg" alt="Luxury Collection" class="cursor-pointer hover:opacity-80 transition rounded">
+                <img src="https://plancherspayless.com/wp-content/uploads/2023/06/IMG_20230606_085533-1024x768.jpg" alt="Luxury Collection" class="cursor-pointer hover:opacity-80 transition rounded">
+                <img src="https://plancherspayless.com/wp-content/uploads/2023/06/IMG_20230606_085533-1024x768.jpg" alt="Luxury Collection" class="cursor-pointer hover:opacity-80 transition rounded">
+              </div>
+            </div>
+            <div class="md:w-1/2">
+              <div class="flex items-center text-yellow-400 mb-4">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <span class="text-gray-500 ml-2">4.7 (28 reviews)</span>
+              </div>
+              <p class="text-gray-700 mb-6"> The Luxury Collection offers solid oak cabinets with a high-end lacquered finish for an exceptional kitchen. Handcrafted in our Montreal workshop. </p>
+              <div class="mb-6">
+                <h4 class="font-semibold text-lg mb-2">Features:</h4>
+                <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                  <li>FSC certified solid oak</li>
+                  <li>Stain resistant lacquered finish</li>
+                  <li>Blum premium punches and hinges</li>
+                  <li>Customizable color options</li>
+                  <li>5 year warranty</li>
+                </ul>
+              </div>
+              <div class="mb-6">
+                <h4 class="font-semibold text-lg mb-2">Price:</h4>
+                <div class="text-2xl font-bold text-primary">Starting at $2,499</div>
+                <p class="text-gray-600 text-sm">Price for a standard kitchen with 10 cabinets</p>
+              </div>
+              <div class="flex flex-col sm:flex-row gap-4">
+                <button class="bg-secondary hover:bg-yellow-600 text-white px-6 py-3 rounded-lg font-medium transition flex-1">
+                  <i class="fas fa-shopping-cart mr-2"></i> Add to cart </button>
+                <button class="border border-primary text-primary hover:bg-primary hover:text-white px-6 py-3 rounded-lg font-medium transition flex-1">
+                  <i class="far fa-heart mr-2"></i> Wishlist </button>
+              </div>
+              <div class="mt-6 flex items-center text-sm text-gray-600">
+                <i class="fas fa-truck mr-2 text-secondary"></i>
+                <span>Free delivery in the Montreal region</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal 2 -->
+    <div id="modal2" class="modal fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition">
+      <div class="modal-overlay absolute inset-0"></div>
+      <div class="modal-container bg-white w-11/12 md:max-w-4xl mx-auto rounded-xl shadow-lg z-50 overflow-y-auto max-h-screen">
+        <div class="modal-content py-4 px-6">
+          <div class="flex justify-between items-center pb-3">
+            <h3 class="font-display text-2xl font-bold text-primary">Modern Collection</h3>
+            <button onclick="closeModal('modal2')" class="text-gray-500 hover:text-gray-700">
+              <i class="fas fa-times text-2xl"></i>
+            </button>
+          </div>
+          <div class="flex flex-col md:flex-row gap-6">
+            <div class="md:w-1/2">
+              <img src="https://plancherspayless.com/wp-content/uploads/2023/06/IMG_20230606_085533-1024x768.jpg" alt="Modern Collection" class="w-full rounded-lg">
+              <div class="grid grid-cols-3 gap-2 mt-4">
+                <img src="https://plancherspayless.com/wp-content/uploads/2023/06/IMG_20230606_085533-1024x768.jpg" alt="Modern Collection" class="cursor-pointer hover:opacity-80 transition rounded">
+                <img src="https://plancherspayless.com/wp-content/uploads/2023/06/IMG_20230606_085533-1024x768.jpg" alt="Modern Collection" class="cursor-pointer hover:opacity-80 transition rounded">
+                <img src="https://plancherspayless.com/wp-content/uploads/2023/06/IMG_20230606_085533-1024x768.jpg" alt="Modern Collection" class="cursor-pointer hover:opacity-80 transition rounded">
+              </div>
+            </div>
+            <div class="md:w-1/2">
+              <div class="flex items-center text-yellow-400 mb-4">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <span class="text-gray-500 ml-2">5.0 (15 reviews)</span>
+              </div>
+              <p class="text-gray-700 mb-6"> The Modern Collection features a sleek design with smooth doors and integrated handles for a minimalist and functional aesthetic. Perfect for contemporary spaces. </p>
+              <div class="mb-6">
+                <h4 class="font-semibold text-lg mb-2">Features:</h4>
+                <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                  <li>High density MDF with melamine finish</li>
+                  <li>Integrated handles for a clean look</li>
+                  <li>Soft-close opening system</li>
+                  <li>15 modern finishes available</li>
+                  <li>5 year warranty</li>
+                </ul>
+              </div>
+              <div class="mb-6">
+                <h4 class="font-semibold text-lg mb-2">Price:</h4>
+                <div class="text-2xl font-bold text-primary">Starting at $1,899</div>
+                <p class="text-gray-600 text-sm">Price for a standard kitchen with 10 cabinets</p>
+              </div>
+              <div class="flex flex-col sm:flex-row gap-4">
+                <button class="bg-secondary hover:bg-yellow-600 text-white px-6 py-3 rounded-lg font-medium transition flex-1">
+                  <i class="fas fa-shopping-cart mr-2"></i> Add to cart </button>
+                <button class="border border-primary text-primary hover:bg-primary hover:text-white px-6 py-3 rounded-lg font-medium transition flex-1">
+                  <i class="far fa-heart mr-2"></i> Wishlist </button>
+              </div>
+              <div class="mt-6 flex items-center text-sm text-gray-600">
+                <i class="fas fa-truck mr-2 text-secondary"></i>
+                <span>Free delivery in the Montreal region</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal 3 -->
+    <div id="modal3" class="modal fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition">
+      <div class="modal-overlay absolute inset-0"></div>
+      <div class="modal-container bg-white w-11/12 md:max-w-4xl mx-auto rounded-xl shadow-lg z-50 overflow-y-auto max-h-screen">
+        <div class="modal-content py-4 px-6">
+          <div class="flex justify-between items-center pb-3">
+            <h3 class="font-display text-2xl font-bold text-primary">Classic Collection</h3>
+            <button onclick="closeModal('modal3')" class="text-gray-500 hover:text-gray-700">
+              <i class="fas fa-times text-2xl"></i>
+            </button>
+          </div>
+          <div class="flex flex-col md:flex-row gap-6">
+            <div class="md:w-1/2">
+              <img src="https://plancherspayless.com/wp-content/uploads/2023/06/IMG_20230606_085533-1024x768.jpg" alt="Classic Collection" class="w-full rounded-lg">
+              <div class="grid grid-cols-3 gap-2 mt-4">
+                <img src="https://plancherspayless.com/wp-content/uploads/2023/06/IMG_20230606_085533-1024x768.jpg" alt="Classic Collection" class="cursor-pointer hover:opacity-80 transition rounded">
+                <img src="https://plancherspayless.com/wp-content/uploads/2023/06/IMG_20230606_085533-1024x768.jpg" alt="Classic Collection" class="cursor-pointer hover:opacity-80 transition rounded">
+                <img src="https://plancherspayless.com/wp-content/uploads/2023/06/IMG_20230606_085533-1024x768.jpg" alt="Classic Collection" class="cursor-pointer hover:opacity-80 transition rounded">
+              </div>
+            </div>
+            <div class="md:w-1/2">
+              <div class="flex items-center text-yellow-400 mb-4">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <span class="text-gray-500 ml-2">5.0 (42 reviews)</span>
+              </div>
+              <p class="text-gray-700 mb-6"> The Classic Collection features molded panels and noble wood finishes for a timeless look that adapts to all styles of home, from the most traditional to the most contemporary. </p>
+              <div class="mb-6">
+                <h4 class="font-semibold text-lg mb-2">Features:</h4>
+                <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                  <li>Solid wood or noble wood veneer</li>
+                  <li>Hand molded panels</li>
+                  <li>Painted or stained finishes to choose from</li>
+                  <li>Traditional or modern handles</li>
+                  <li>5 year warranty</li>
+                </ul>
+              </div>
+              <div class="mb-6">
+                <h4 class="font-semibold text-lg mb-2">Price:</h4>
+                <div class="text-2xl font-bold text-primary">Starting at $2,199</div>
+                <p class="text-gray-600 text-sm">Price for a standard kitchen with 10 cabinets</p>
+              </div>
+              <div class="flex flex-col sm:flex-row gap-4">
+                <button class="bg-secondary hover:bg-yellow-600 text-white px-6 py-3 rounded-lg font-medium transition flex-1">
+                  <i class="fas fa-shopping-cart mr-2"></i> Add to cart </button>
+                <button class="border border-primary text-primary hover:bg-primary hover:text-white px-6 py-3 rounded-lg font-medium transition flex-1">
+                  <i class="far fa-heart mr-2"></i> Wishlist </button>
+              </div>
+              <div class="mt-6 flex items-center text-sm text-gray-600">
+                <i class="fas fa-truck mr-2 text-secondary"></i>
+                <span>Free delivery in the Montreal region</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Initialize AOS -->
+    <script>
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        offset: 100
+      });
+      // Modal functions
+      function openModal(modalId) {
+        document.getElementById(modalId).classList.remove('opacity-0', 'pointer-events-none');
+        document.body.classList.add('overflow-hidden');
+      }
+
+      function closeModal(modalId) {
+        document.getElementById(modalId).classList.add('opacity-0', 'pointer-events-none');
+        document.body.classList.remove('overflow-hidden');
+      }
+      // Close modal when clicking outside
+      window.onclick = function(event) {
+        if (event.target.classList.contains('modal-overlay')) {
+          document.querySelectorAll('.modal').forEach(modal => {
+            modal.classList.add('opacity-0', 'pointer-events-none');
+          });
+          document.body.classList.remove('overflow-hidden');
+        }
+      }
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      function toggleMobileMenu() {
+        mobileMenu.classList.toggle('hidden');
+      }
+      mobileMenuButton.addEventListener('click', toggleMobileMenu);
+      // Mobile menu toggle would go here
+    </script>
+  </body>
+</html>
